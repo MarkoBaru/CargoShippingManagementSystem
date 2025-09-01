@@ -2,11 +2,11 @@
 
 Eine moderne WPF-Anwendung für das Tracking und Management von Frachtgütern, entwickelt mit .NET 8 und basierend auf Domain-Driven Design Prinzipien.
 
-## ?? Übersicht
+## Übersicht
 
 Das Cargo Shipping Management System ist eine umfassende Lösung für die Verwaltung von Frachtgütern in der Schifffahrt. Die Anwendung ermöglicht das Tracking von Sendungen, die Registrierung von Handling-Events und die Verwaltung von Stammdaten wie Standorten und Reisen.
 
-## ??? Architektur
+## Architektur
 
 Das Projekt folgt einer sauberen, geschichteten Architektur:
 
@@ -20,24 +20,24 @@ CargoShipping/
 ??? CargoShipping/                 # WPF Client-Anwendung
 ```
 
-## ?? Features
+## Features
 
-### ?? Cargo Management
+### Cargo Management
 - **Cargo Tracking**: Suche und Verfolgung von Sendungen über Tracking-ID
 - **Cargo Erstellung**: Erstellung neuer Sendungen mit Origin, Destination und Deadline
 - **Status-Übersicht**: Vollständige Übersicht aller Sendungen in einer DataGrid-Ansicht
 
-### ?? Event Management
+### Event Management
 - **Handling Events**: Registrierung von Events (RECEIVE, LOAD, UNLOAD, CLAIM, CUSTOMS)
 - **Event-Historie**: Vollständige Nachverfolgung aller Events pro Sendung
 - **Status-Updates**: Automatische Aktualisierung des Cargo-Status basierend auf Events
 
-### ??? Master Data Management
+### Master Data Management
 - **Locations**: Verwaltung von Standorten mit UN/LOCODE
 - **Voyages**: Verwaltung von Reisen und Routen
 - **Real-time Updates**: Live-Aktualisierung aller Daten
 
-## ??? Technologie-Stack
+## Technologie-Stack
 
 - **.NET 8**: Moderne .NET Framework Version
 - **WPF**: Windows Presentation Foundation für die Benutzeroberfläche
@@ -46,7 +46,7 @@ CargoShipping/
 - **xUnit**: Unit Testing Framework
 - **Clean Architecture**: Saubere Trennung der Schichten
 
-## ?? Domain-Modell
+## Domain-Modell
 
 Das System basiert auf einem reichhaltigen Domain-Modell:
 
@@ -66,7 +66,7 @@ Das System basiert auf einem reichhaltigen Domain-Modell:
 - **HandlingType**: RECEIVE, LOAD, UNLOAD, CLAIM, CUSTOMS
 - **TransportStatus**: NOT_RECEIVED, IN_PORT, ONBOARD_CARRIER, CLAIMED, UNKNOWN
 
-## ?? Installation und Setup
+## Installation und Setup
 
 ### Voraussetzungen
 - Visual Studio 2022 oder höher
@@ -100,7 +100,7 @@ dotnet build
 dotnet run --project CargoShipping
 ```
 
-## ?? Verwendung
+## Verwendung
 
 ### Cargo Tracking
 1. **Suche**: Geben Sie eine Tracking-ID in das Suchfeld ein
@@ -116,7 +116,7 @@ dotnet run --project CargoShipping
 1. **Locations**: Fügen Sie neue Standorte mit UN/LOCODE hinzu
 2. **Voyages**: Erstellen Sie neue Reisen mit Voyage-Nummer
 
-## ?? Screenshots
+## Screenshots
 
 ### Hauptansicht - Cargo Tracking
 Die Hauptansicht bietet eine intuitive Oberfläche für das Cargo-Tracking mit Suchfunktion und Detailansicht.
@@ -130,7 +130,7 @@ Registrierung und Übersicht aller Handling-Events mit Zeitstempel.
 ### Master Data Management
 Verwaltung von Standorten und Reisen für die Stammdatenpflege.
 
-## ?? Testing
+## Testing
 
 Das Projekt enthält umfassende Unit Tests:
 
@@ -142,7 +142,7 @@ dotnet test
 dotnet test --collect:"XPlat Code Coverage"
 ```
 
-## ?? API Documentation
+## API Documentation
 
 ### gRPC Services
 Die Anwendung stellt gRPC Services für externe Integration bereit:
@@ -151,7 +151,7 @@ Die Anwendung stellt gRPC Services für externe Integration bereit:
 - **LocationService**: Standort-Management
 - **EventService**: Event-Registrierung
 
-## ?? Contributing
+## Contributing
 
 Beiträge sind willkommen! Bitte beachten Sie:
 
@@ -161,28 +161,76 @@ Beiträge sind willkommen! Bitte beachten Sie:
 4. Push zum Branch (`git push origin feature/AmazingFeature`)
 5. Öffnen Sie einen Pull Request
 
-## ?? Coding Standards
+## Coding Standards
 
 - Verwenden Sie C# Naming Conventions
 - Befolgen Sie SOLID Prinzipien
 - Schreiben Sie Unit Tests für neue Features
 - Dokumentieren Sie öffentliche APIs
 
-## ?? Lizenz
+## Projektstruktur
+
+```
+CargoShipping/
+?
+??? CargoShipping/                    # WPF Client Application
+?   ??? MainWindow.xaml              # Hauptfenster
+?   ??? CreateCargoDialog.xaml       # Dialog für neue Sendungen
+?   ??? RegisterEventDialog.xaml     # Dialog für Event-Registrierung
+?
+??? CargoShipping.Domain/            # Domain Layer
+?   ??? Cargo.cs                     # Hauptentität
+?   ??? HandlingEvent.cs             # Event-Entität
+?   ??? Location.cs                  # Standort-Entität
+?   ??? Voyage.cs                    # Reise-Entität
+?   ??? ValueObjects.cs              # Value Objects
+?
+??? CargoShipping.Application/       # Application Layer
+?   ??? Contracts/                   # Interfaces
+?   ??? Services/                    # Application Services
+?
+??? CargoShipping.Infrastructure/    # Infrastructure Layer
+?   ??? (Repository Implementierungen)
+?
+??? CargoShipping.GrpcService/       # gRPC Service
+?   ??? (Service Implementierungen)
+?
+??? CargoShipping.Tests/             # Unit Tests
+    ??? (Test Klassen)
+```
+
+## Datenfluss
+
+1. **Cargo Creation**: Benutzer erstellt neue Sendung über WPF UI
+2. **Event Registration**: Handling Events werden registriert und aktualisieren Cargo Status
+3. **Tracking**: Real-time Verfolgung des Cargo-Status über alle Events
+4. **Reporting**: Vollständige Historie und aktuelle Status-Informationen
+
+## Status-Mapping
+
+| Event Type | Resultierender Status |
+|------------|----------------------|
+| RECEIVE    | IN_PORT             |
+| LOAD       | ONBOARD_CARRIER     |
+| UNLOAD     | IN_PORT             |
+| CLAIM      | CLAIMED             |
+| CUSTOMS    | IN_PORT             |
+
+## Lizenz
 
 Dieses Projekt steht unter der MIT Lizenz - siehe [LICENSE](LICENSE) Datei für Details.
 
-## ?? Team
+## Team
 
 - **Marko Baru** - *Initial work* - [MarkoBaru](https://github.com/MarkoBaru)
 
-## ?? Acknowledgments
+## Acknowledgments
 
 - Domain-Driven Design Patterns von Eric Evans
 - Clean Architecture von Robert C. Martin
 - .NET Community für Inspiration und Support
 
-## ?? Support
+## Support
 
 Bei Fragen oder Problemen:
 - Öffnen Sie ein Issue auf GitHub
@@ -190,4 +238,4 @@ Bei Fragen oder Problemen:
 
 ---
 
-**Entwickelt mit ?? und .NET 8**
+**Entwickelt mit Leidenschaft und .NET 8**
