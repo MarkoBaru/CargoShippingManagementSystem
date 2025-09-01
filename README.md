@@ -12,12 +12,12 @@ Das Projekt folgt einer sauberen, geschichteten Architektur:
 
 ```
 CargoShipping/
-??? CargoShipping.Domain/          # Domain-Entitäten und Geschäftslogik
-??? CargoShipping.Application/     # Anwendungslogik und Services
-??? CargoShipping.Infrastructure/  # Infrastruktur und Datenzugriff
-??? CargoShipping.GrpcService/     # gRPC Service
-??? CargoShipping.Tests/           # Unit Tests
-??? CargoShipping/                 # WPF Client-Anwendung
+|-- CargoShipping.Domain/          # Domain-Entitäten und Geschäftslogik
+|-- CargoShipping.Application/     # Anwendungslogik und Services
+|-- CargoShipping.Infrastructure/  # Infrastruktur und Datenzugriff
+|-- CargoShipping.GrpcService/     # gRPC Service
+|-- CargoShipping.Tests/           # Unit Tests
+`-- CargoShipping/                 # WPF Client-Anwendung
 ```
 
 ## Features
@@ -172,31 +172,31 @@ Beiträge sind willkommen! Bitte beachten Sie:
 
 ```
 CargoShipping/
-?
-??? CargoShipping/                    # WPF Client Application
-?   ??? MainWindow.xaml              # Hauptfenster
-?   ??? CreateCargoDialog.xaml       # Dialog für neue Sendungen
-?   ??? RegisterEventDialog.xaml     # Dialog für Event-Registrierung
-?
-??? CargoShipping.Domain/            # Domain Layer
-?   ??? Cargo.cs                     # Hauptentität
-?   ??? HandlingEvent.cs             # Event-Entität
-?   ??? Location.cs                  # Standort-Entität
-?   ??? Voyage.cs                    # Reise-Entität
-?   ??? ValueObjects.cs              # Value Objects
-?
-??? CargoShipping.Application/       # Application Layer
-?   ??? Contracts/                   # Interfaces
-?   ??? Services/                    # Application Services
-?
-??? CargoShipping.Infrastructure/    # Infrastructure Layer
-?   ??? (Repository Implementierungen)
-?
-??? CargoShipping.GrpcService/       # gRPC Service
-?   ??? (Service Implementierungen)
-?
-??? CargoShipping.Tests/             # Unit Tests
-    ??? (Test Klassen)
+|
+|-- CargoShipping/                    # WPF Client Application
+|   |-- MainWindow.xaml              # Hauptfenster
+|   |-- CreateCargoDialog.xaml       # Dialog für neue Sendungen
+|   `-- RegisterEventDialog.xaml     # Dialog für Event-Registrierung
+|
+|-- CargoShipping.Domain/            # Domain Layer
+|   |-- Cargo.cs                     # Hauptentität
+|   |-- HandlingEvent.cs             # Event-Entität
+|   |-- Location.cs                  # Standort-Entität
+|   |-- Voyage.cs                    # Reise-Entität
+|   `-- ValueObjects.cs              # Value Objects
+|
+|-- CargoShipping.Application/       # Application Layer
+|   |-- Contracts/                   # Interfaces
+|   `-- Services/                    # Application Services
+|
+|-- CargoShipping.Infrastructure/    # Infrastructure Layer
+|   `-- (Repository Implementierungen)
+|
+|-- CargoShipping.GrpcService/       # gRPC Service
+|   `-- (Service Implementierungen)
+|
+`-- CargoShipping.Tests/             # Unit Tests
+    `-- (Test Klassen)
 ```
 
 ## Datenfluss
