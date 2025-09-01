@@ -1,0 +1,52 @@
+<Window x:Class="CargoShipping.CreateCargoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Create New Cargo" Height="400" Width="500"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        
+        <Style x:Key="InputStyle" TargetType="FrameworkElement">
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Create New Cargo Shipment" 
+                   FontSize="18" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Tracking ID:" Style="{StaticResource LabelStyle}"/>
+            <TextBox x:Name="TrackingIdTextBox" Style="{StaticResource InputStyle}" Padding="5"/>
+            
+            <TextBlock Text="Origin Location:" Style="{StaticResource LabelStyle}"/>
+            <ComboBox x:Name="OriginComboBox" Style="{StaticResource InputStyle}" 
+                      DisplayMemberPath="Name" Padding="5"/>
+            
+            <TextBlock Text="Destination Location:" Style="{StaticResource LabelStyle}"/>
+            <ComboBox x:Name="DestinationComboBox" Style="{StaticResource InputStyle}" 
+                      DisplayMemberPath="Name" Padding="5"/>
+            
+            <TextBlock Text="Arrival Deadline:" Style="{StaticResource LabelStyle}"/>
+            <DatePicker x:Name="DeadlineDatePicker" Style="{StaticResource InputStyle}"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="CreateButton" Content="Create" Width="80" Margin="0,0,10,0"
+                    Click="CreateButton_Click" IsDefault="True"/>
+            <Button x:Name="CancelButton" Content="Cancel" Width="80"
+                    Click="CancelButton_Click" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
